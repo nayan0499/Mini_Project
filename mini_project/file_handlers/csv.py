@@ -11,7 +11,6 @@ def load_from_file(list_name, item_type):
         return list
 
 def save_to_file(list):
-    # You will need 'wb' mode in Python 2.x
     with open(f'mini_project/data/{list.list_name}.csv', 'w', newline='') as f:
         w = csv.DictWriter(f, list.item_type.keys(),
                             quoting=csv.QUOTE_MINIMAL)

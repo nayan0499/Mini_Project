@@ -54,15 +54,12 @@ class Product:
             self.price = price
             self.name = name.title()
 
-    def __eq__(self, other):
-        return self.price == other.price and self.name == other.name
-
     @classmethod
     def keys(cls):
         return ["name", "price"]
 
     @classmethod
-    def from_user_input(cls):  # TODO: Make it more testable
+    def from_user_input(cls): 
         while True:
             try:
                 new_product = cls(
@@ -109,12 +106,12 @@ class Product:
 
 
 class Courier:
-
+    
     def __init__(self, name, phone):
         if name.isnumeric():
             raise TypeError("Name must not be numeric")
-        elif not isinstance(phone, int):
-            raise TypeError("Phone must be int")
+        elif not phone.isnumeric():
+            raise TypeError("Phone must only contain numbers")
         else:
             self.name = name
             self.phone = phone
@@ -130,8 +127,8 @@ class Courier:
     def from_user_input(cls):
         while True:
             try:
-                courier = cls(name=input("Courier name: "),
-                              phone=input("Phone number: "))
+                courier = cls(input("Courier name: "),
+                              (input("Phone number: ")))
                 return courier
             except:
                 print("Invalid input - Try again!!")
@@ -151,7 +148,7 @@ class Courier:
 
     @classmethod
     def dict_to_obj(cls, dict):
-        courier = Courier(dict["name"], int(dict["phone"]))
+        courier = Courier(dict["name"], dict["phone"])
         return courier
 
 
@@ -175,15 +172,15 @@ class Order:
     def from_user_input(cls):
         while True:
             try:
-                order = Order(customer_name=input("Customer name: "),
-                              customer_address=input("customer address: "),
-                              customer_phone=input("Customer phone: "),
-                              courier_index=input("Courier index: "),
-                              status=input("Status"),
-                              item_indexes=input("Items: ")
+                order = Order(input("Customer name: "),
+                              input("customer address: "),
+                              input("Customer phone: "),
+                              input("Courier index: "),
+                              input("Status"),
+                              input("Items: ")
                               )
                 return order
-            except:
+            except :
                 print("Invalid input - Try again!!")
                 continue
 
@@ -254,7 +251,7 @@ class List:
                 print("Index invalid- Try again")
 
     def display(self):
-        keys = self.items[0].keys()
+        keys = self.item_type.keys()
         for key in keys:
             print(key + "          ", end="")
         print("")
