@@ -1,12 +1,16 @@
-import sys 
+import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from src.service import Service
+from unittest import mock
+from unittest.mock import call, patch
+
+import pytest
+
 from src.product.product import Product
 from src.product.product_repository import ProductFileRepository
-import pytest
-from unittest.mock import patch, call 
-from unittest import mock 
+from src.service import Service
+
 
 @pytest.fixture()
 def product_service():

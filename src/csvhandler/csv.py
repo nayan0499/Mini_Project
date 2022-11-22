@@ -1,4 +1,4 @@
-import csv 
+import csv
 
 
 def load_from_file(file_name, item_type):

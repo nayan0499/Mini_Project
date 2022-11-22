@@ -1,12 +1,13 @@
 
-import sys 
+import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+import pytest
+
 from src.product.product import Product
 from src.product.product_repository import ProductFileRepository
 
-
-import pytest
 
 @pytest.fixture()
 def product_repository():

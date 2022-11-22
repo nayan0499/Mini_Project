@@ -1,11 +1,12 @@
-import pytest
 import sys
 from pathlib import Path
 
+import pytest
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from src.order.order import Order
 from unittest.mock import patch
 
+from src.order.order import Order
 
 
 def test_order_constructor():

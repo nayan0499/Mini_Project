@@ -1,9 +1,12 @@
-import sys 
+import sys
 from pathlib import Path
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from src.product.product import Product
 from unittest.mock import patch
-import pytest 
+
+import pytest
+
+from src.product.product import Product
 
 
 def test_product_constructor():

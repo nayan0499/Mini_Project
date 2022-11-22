@@ -2,13 +2,14 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from src.product.product import Product
-from order.order import Order
-from courier.courier import Courier
-from src.courier.courier_repository import CourierFileRepository
-from src.product.product_repository import ProductFileRepository
-from src.order.order_repository import OrderFileRepository
 from tabulate import tabulate
+
+from courier.courier import Courier
+from order.order import Order
+from src.courier.courier_repository import CourierFileRepository
+from src.order.order_repository import OrderFileRepository
+from src.product.product import Product
+from src.product.product_repository import ProductFileRepository
 
 
 class Service:
