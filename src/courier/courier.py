@@ -32,7 +32,7 @@ class Courier:
         return courier
 
     @classmethod
-    def create_item_from_user_input(cls):
+    def create(cls):
         while True:
             try:
                 courier = cls(input("Courier name: "),

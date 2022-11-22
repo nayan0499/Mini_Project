@@ -2,8 +2,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from menu import menu, prod_menu, ord_menu, cour_menu
-from service import courier_manager, order_manager, product_manager
+from src.menu import menu, prod_menu, ord_menu, cour_menu
+from src.service import courier_service, product_service, order_service
 
 
 def sub_app(sub_menu, service):
@@ -71,7 +71,7 @@ app(
     prod_menu,
     cour_menu,
     ord_menu,
-    order_manager,
-    product_manager,
-    courier_manager,
+    order_service,
+    product_service,
+    courier_service,
 )

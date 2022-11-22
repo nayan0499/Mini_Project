@@ -9,7 +9,9 @@ class Order:
     keys = ["customer_name", "customer_address",
             "customer_phone", "courier", "status", "items"]
 
-    def __init__(self, customer_name, customer_address, customer_phone, courier, status, items):
+    status_list = ["preparing", "sent"]
+
+    def __init__(self, customer_name, customer_address, customer_phone, courier, status,items,):
         if customer_name.isnumeric() and len(customer_name)> 2:
             raise TypeError("Name must not be numeric")
         else:
@@ -26,14 +28,14 @@ class Order:
         return [object.customer_name, object.customer_address, object.customer_phone, object.courier, object.status, object.items]
 
     @classmethod
-    def create_item_from_user_input(cls):
+    def create(cls):
         while True:
             try:
                 order = Order(input("Customer name: "),
                               input("customer address: "),
                               input("Customer phone: "),
                               input("Courier index: "),
-                              input("Status"),
+                              "preparing",
                               input("Items: ")
                               )
                 return order
@@ -68,21 +70,22 @@ class Order:
         for k,v in order_details.items():
             if k =="customer_name": 
                 if v.isnumeric(): 
-                    raise TypeError("name is invalid - try again")
+                    raise TypeError("Invalid name - Try again")
             elif k == "customer_phone":
                 if not v.isnumeric(): 
-                    raise TypeError("phone number is invalid - try again")
+                    raise TypeError("Invalid phone number - Try again")
         
 
         return order_details 
 
     @classmethod
     def dict_to_obj(cls, dict):
-        order = Order(dict["customer_name"],
-                      dict["customer_address"],
-                      dict["customer_phone"],
-                      dict["courier"],
-                      dict["status"],
-                      dict["items"]
-                      )
-        return order
+            order = Order(dict["customer_name"],
+                        dict["customer_address"],
+                        dict["customer_phone"],
+                        dict["courier"],
+                        dict["status"],
+                        dict["items"]
+                        )
+            return order
+

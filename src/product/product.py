@@ -32,7 +32,7 @@ class Product:
             return -1
 
     @classmethod
-    def create_item_from_user_input(cls):
+    def create(cls):
         while True:
             try:
                 new_product = Product(
