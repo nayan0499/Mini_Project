@@ -1,12 +1,13 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from menu.menu import menu, prod_menu, ord_menu, cour_menu
 from src.product.csv_product_repo import prod_repo
 from src.order.csv_order_repo import order_repo
 from src.courier.csv_courier_repo import courier_repo
 from service import *
-import sys
-from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 
 def sub_app(sub_menu, repo):
@@ -30,7 +31,7 @@ def sub_app(sub_menu, repo):
         elif sub_menu.selected == 3 and sub_menu.name == "order":
             display(repo)
             index = get_valid_index_from_user(len(repo.get()))
-            update_details = get_update_details_from_user_input(sub_menu.name, ["status"])
+            update_details = get_update_details_from_user_input(sub_menu.name, "status")
             update(index, update_details, repo)
 
         elif sub_menu.selected == 3:

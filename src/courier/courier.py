@@ -17,7 +17,6 @@ class Courier:
 
     @classmethod
     def dict_to_obj(cls, courier_dict: dict):
-        print(type(courier_dict))
         if not isinstance(courier_dict, dict):
             raise TypeError("The argument be a dictionary")
         try:
