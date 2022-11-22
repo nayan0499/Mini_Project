@@ -1,24 +1,23 @@
+
 from abc import ABC, abstractmethod
-
-
-class CourierAbstract(ABC):
-
+class CourierAbstract(ABC): 
+ 
     @abstractmethod
-    def add(self, courier):
+    def add(self, product):
         pass
-
     @abstractmethod
     def delete(self, index):
         pass
-
     @abstractmethod
-    def update(self, index, updated_courier):
+    def update(self, index, **kwargs):
         pass
-
     @abstractmethod
     def get(self):
         pass
-
     @abstractmethod
     def save(self):
         pass
+
+
+
+ 

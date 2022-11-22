@@ -1,20 +1,14 @@
 import sys
 from pathlib import Path
-
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from menu.menu import menu, prod_menu, ord_menu, cour_menu
-from src.product.csv_product_repo import prod_repo
-from src.order.csv_order_repo import order_repo
-from src.courier.csv_courier_repo import courier_repo
-from service import *
+from menu import menu, prod_menu, ord_menu, cour_menu
+from service import courier_manager, order_manager, product_manager
 
 
 
-def sub_app(sub_menu, repo):
+def sub_app(sub_menu, service):
     while True:
-
-        sub_menu_display = sub_menu.get_menu()
-        print(sub_menu_display)
+        print(sub_menu.get_menu())
         selected_option = input("Select input: ")
         sub_menu.set_selected_option(selected_option)
 
@@ -22,62 +16,46 @@ def sub_app(sub_menu, repo):
             break
 
         elif sub_menu.selected == 1:
-            display(repo)
+            service.display()
 
         elif sub_menu.selected == 2:
-            new_item = create_item_depending_on_object_type(sub_menu.name)
-            add(new_item, repo)
+            service.add()
 
-        elif sub_menu.selected == 3 and sub_menu.name == "order":
-            display(repo)
-            index = get_valid_index_from_user(len(repo.get()))
-            update_details = get_update_details_from_user_input(sub_menu.name, "status")
-            update(index, update_details, repo)
+        elif sub_menu.selected == 3 and sub_menu == ord_menu:
+            service.update("status")
 
         elif sub_menu.selected == 3:
-            display(repo)
-            index = get_valid_index_from_user(len(repo.get()))
-            update_details = get_update_details_from_user_input(sub_menu.name)
-            update(index, update_details, repo)
+            service.update()
 
         elif sub_menu.selected == 4 and sub_menu == ord_menu:
-            display(repo)
-            index = get_valid_index_from_user(len(repo.get()))
-            update_details = get_update_details_from_user_input(sub_menu.name)
-            update(index, update_details, repo)
+            service.update()
 
         elif sub_menu.selected == 4:
-            display(repo)
-            index = get_valid_index_from_user(len(repo.get()))
-            delete(index, repo)
-
+            service.delete()
+            
         elif sub_menu.selected == 5 and sub_menu == ord_menu:
-            display(repo)
-            index = get_valid_index_from_user(len(repo.get()))
-            delete(index, repo)
+            service.delete()
 
 
-def app(main_menu, product_menu, courier_menu, order_menu, order_repo_impl, prod_repo_impl, courier_repo_impl):
+def app(main_menu, product_menu, courier_menu, order_menu, order_service, product_service, courier_service):
+    
     while True:
         print(main_menu.get_menu())
         selected_option = input("Select input: ")
         main_menu.set_selected_option(selected_option)
 
         if main_menu.selected == 0:
-            save(prod_repo_impl)
-            save(courier_repo_impl)
-            save(order_repo_impl)
-            print("EXIT")
+            product_service.save()
+            courier_service.save()
+            order_service.save()
             break
 
         elif main_menu.selected == 1:
-            sub_app(product_menu, prod_repo_impl)
-
+            sub_app(product_menu, product_service)
         elif main_menu.selected == 2:
-            sub_app(courier_menu, courier_repo_impl)
-
+            sub_app(courier_menu, courier_service)
         elif main_menu.selected == 3:
-            sub_app(order_menu, order_repo_impl)
+            sub_app(order_menu, order_service)
 
 
-app(menu, prod_menu, cour_menu, ord_menu, order_repo, prod_repo, courier_repo)
+app(menu, prod_menu, cour_menu, ord_menu, order_manager, product_manager, courier_manager)
