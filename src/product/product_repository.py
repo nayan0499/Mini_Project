@@ -3,7 +3,6 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from csvhandler.csv import load_from_file, save_to_file
-from product.product_abstract import ProductAbstract
 from src.product.product import Product
 from src.repository.repository import Repository
 
