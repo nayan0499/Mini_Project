@@ -2,10 +2,10 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from csvhandler.csv import load_from_file, save_to_file
-from order.order_abstract import OrderAbstract
 from order.order import Order
+from src.repository.repository import Repository
 
-class OrderRepo(OrderAbstract): 
+class OrderFileRepository(Repository): 
 
     def __init__(self, file_name):
         super().__init__()
