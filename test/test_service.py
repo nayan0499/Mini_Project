@@ -1,112 +1,106 @@
 import sys 
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-
 from src.service import Service
 from src.product.product import Product
-from product.product_repository import ProductRepo
+from src.product.product_repository import ProductFileRepository
 import pytest
 from unittest.mock import patch, call 
+from unittest import mock 
 
 @pytest.fixture()
-def fake_product_service():
-    fake_product_repo = ProductRepo("resources/fake_product.csv")
-    fake_product_service = Service(fake_product_repo, Product)
-    yield fake_product_service
-    fake_product_service= Service(fake_product_repo, Product)
+def product_service():
+    product_repository = ProductFileRepository(r"C:\Users\NayanGurung\Generation\Mini_Project\test\resources\fake_product.csv")
+    product_service = Service(product_repository, Product)
+    yield product_service
+    product_service = Service(product_repository, Product)
 
 
 @patch("builtins.input", side_effect = [0])
 @patch("builtins.print")
-def test_get_valid_index_from_user(mock_print,mock_input,fake_product_service):
+def test_get_valid_index_from_user(mock_print,mock_input,product_service):
     expected = 0
-    actual = fake_product_service.get_valid_index_from_user()
+    actual = product_service.get_index(4)
     assert actual == expected
-    mock_print.assert_called_with("Select from 0 to 1")
+    mock_print.assert_called_with("Select from 0 to 3")
 
 
 
 
-@patch('src.product.product.Product.object_to_list', return_value = ["Coke", 2.2]  )
-@patch('src.product.csv_product_repo.ProductRepo', autospec=True )
-def test_display(mock_product_repo, mock_object_to_list, fake_product_service):
+
+
+@patch('src.product.product_repository.ProductFileRepository', autospec=True )
+def test_display(mock_product_repo, product_service):
     
     p1 = Product("Coke", 2.2)
-    mock_product_repo.get.return_value = [p1]
-    fake_product_service = Service(mock_product_repo, Product)
-
-    fake_product_service.display()
-    for product in mock_product_repo.get():
-        mock_object_to_list.assert_called_with(product)
+    mock_product_repo.list= [p1]
+    product_service = Service(mock_product_repo, Product)
+    product_service.display()
     mock_product_repo.get.assert_called_with()
 
 
 @patch("builtins.print")
 @patch('src.product.product.Product.object_to_list', return_value= [Product("Coke", 2.2)] )
-@patch('src.product.csv_product_repo.ProductRepo', autospec=True )
+@patch('src.product.product_repository.ProductFileRepository', autospec=True )
 def test_display_when_database_is_empty(mock_product_repo, mock_product, mock_print):
     mock_product_repo.get.return_value = []
-    fake_product_service = Service(mock_product_repo,Product)
-    fake_product_service.display()
+    product_service = Service(mock_product_repo,Product)
+    product_service.display()
     mock_print.assert_called_with("No items to display")
  
 
 
 
 
-@patch('src.product.csv_product_repo.ProductRepo', autospec=True )
+@patch('src.product.product_repository.ProductFileRepository', autospec=True )
 @patch("src.product.product.Product.create_item_from_user_input", return_value = Product("Coke",2.2))
 def test_add(mock_create_item_from_user_input, mock_product_repo):
     #Assemble 
-    fake_product_service = Service(mock_product_repo, Product)
+    product_service = Service(mock_product_repo, Product)
 
     #Act 
-    actual = fake_product_service.add()
+    actual = product_service.add()
 
     #Assert 
     mock_create_item_from_user_input.assert_called_once_with()
     mock_product_repo.add.assert_called_with(mock_create_item_from_user_input.return_value)
 
-    
-@patch('src.product.csv_product_repo.ProductRepo', autospec=True )
-@patch("src.product.product.Product.get_update_details", return_value = {"name": "Cheese"})
-def test_update(mock_get_update_details, mock_product_repo):
+#  def update(self,*args):
+#         index = self.get_valid_index_from_user(len(self.repo.get()))
+#         updated_details = self.item_type.get_update_details(*args)
+#         self.repo.update(index, updated_details) 
+#         return updated_details
+
+@patch.object(Product, "get_update_details" ,return_value ={"name":"Coke"})
+@patch.object(Service, "get_index", return_value = 1)
+def test_update(mock_ervice_method, mock_product_method,product_service):
     #Assemble 
-    fake_product_service = Service(mock_product_repo, Product)
+    actual= product_service.update()
+    expected ={"name":"Coke"}
+    actual == expected
+   
+
+
+@patch.object(Service, "get_index", return_value = 1)
+def test_delete( mock_service_method, product_service):
+    #Assemble 
+    actual = product_service.delete()
     
     #Act 
-    actual=fake_product_service.update(0)
-    expected = {"name": "Cheese"} 
+    expected = 1
 
     #Assert 
     assert actual == expected
-    mock_get_update_details.assert_called_once_with()
-    mock_product_repo.update.assert_called_with(0, mock_get_update_details.return_value)
 
 
 
-
-@patch('src.product.csv_product_repo.ProductRepo', autospec=True )
-def test_delete( mock_product_repo):
-    #Assemble 
-    fake_product_service = Service(mock_product_repo, Product)
-    
-    #Act 
-    actual=fake_product_service.delete(0)
-    expected = 0
-
-    #Assert 
-    assert actual == expected
-    mock_product_repo.delete.assert_called_with(0)
-
-
-@patch('src.product.csv_product_repo.ProductRepo', autospec=True )
+@patch('src.product.product_repository.ProductFileRepository', autospec=True )
 def test_save(mock_product_repo):
     #Assemble 
-    fake_product_service = Service(mock_product_repo, Product)
+    product_service = Service(mock_product_repo, Product)
     
     #Act 
-    fake_product_service.save()
+    product_service.save()
 
     #Assert
     mock_product_repo.save.assert_called_with()
