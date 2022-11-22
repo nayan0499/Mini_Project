@@ -4,7 +4,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from src.product.product import Product
 from order.order import Order
 from courier.courier import Courier
-from courier.csv_courier_repo import CourierRepo
+from courier.courier_repository import CourierRepo
 from product.product_repository import ProductRepo
 from order.order_repository import OrderRepo
 from tabulate import tabulate
