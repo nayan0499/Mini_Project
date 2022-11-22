@@ -5,8 +5,8 @@ from src.product.product import Product
 from order.order import Order
 from courier.courier import Courier
 from courier.csv_courier_repo import CourierRepo
-from product.product_repo import ProductRepo
-from order.csv_order_repo import OrderRepo
+from product.product_repository import ProductRepo
+from order.order_repository import OrderRepo
 from tabulate import tabulate
 
 

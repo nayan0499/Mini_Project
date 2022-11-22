@@ -4,7 +4,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from src.service import Service
 from src.product.product import Product
-from product.product_repo import ProductRepo
+from product.product_repository import ProductRepo
 import pytest
 from unittest.mock import patch, call 
 
