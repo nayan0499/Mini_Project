@@ -73,7 +73,31 @@ This application runs on the command line. The user is able to view and choose f
 ### Demo - Update function 
 
 ```Python 
+    
+   # service.py
+   product_service = Service(prod_repo, Product)
+   
+   # app.py
+   ...elif sub_menu.selected == 3:
+            service.update()
+            
+   # order.py        
+   ... @classmethod
+        def get_update(cls):
 
+        product_details = {}
+        for key in cls.keys:
+            input_by_user = input(f'{key}: ')
+            if input_by_user != '':
+                product_details[key] = input_by_user
+        try:
+            product_details = cls.get_validated_update(product_details)
+            return product_details
+        except TypeError as e:
+            print(e)  
+            return cls.get_update_details()
+            
+   # service.py
    def update(self, *args):
         list_of_items = self.repo.get()
         print(self.tabulate_list(list_of_items, True))
