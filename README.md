@@ -64,7 +64,6 @@ This application runs on the command line. The user is able to view and choose f
 
 
 [![Untitled-Diagram-drawiosss-Page-1-drawio-2.png](https://i.postimg.cc/LsjPpDzt/Untitled-Diagram-drawiosss-Page-1-drawio-2.png)](https://postimg.cc/PLrJbmVJ)
-#### Project structure
 
 
 
