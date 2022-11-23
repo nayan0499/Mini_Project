@@ -80,7 +80,7 @@ This tree represents the directories in this repository.
    ...elif sub_menu.selected == 3:
             service.update()
             
-   # order.py        
+   # product.py     
    ... @classmethod
         def get_update(cls):
 
