@@ -20,7 +20,7 @@ This application runs on the command line. The user is able to view and choose f
 
 [![Untitled-Diagramss-Page-2-drawio.png](https://i.postimg.cc/vHxcyDzb/Untitled-Diagramss-Page-2-drawio.png)](https://postimg.cc/nCZHYFgP)
 
-[![Untitled-Diagram-drawiosss-Page-1-drawio-2.png](https://i.postimg.cc/hPJqv5fq/Untitled-Diagram-drawiosss-Page-1-drawio-2.png)](https://postimg.cc/YhwPy86X)
+[![Untitled-Diagram-drawiosss-Page-1-drawio-2.png](https://i.postimg.cc/LsjPpDzt/Untitled-Diagram-drawiosss-Page-1-drawio-2.png)](https://postimg.cc/PLrJbmVJ)
 
 ### Meeting project requirement
 * Unit testing using unittest and pytest 
