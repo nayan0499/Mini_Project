@@ -2,10 +2,11 @@
 
 
 ## Project Background: 
-
-This application runs on the command line. The user is able to view and choose from multiple menu options, including creating, updating, reading, and deleting data from csv files. 
+This CLI project was developed to fulfil the clients' constantly changing requirements. Currently, this app allows users to view and choose from multiple menu options, including creating, updating, reading, and deleting data which persists in csv files.
 
 ### Client requirements: 
+The following requirements have been implemented in my app. 
+
 * Create a product, courier, or order dictionary and add it to a list 
 * View all products, couriers, or orders
 * Update the status of an order
@@ -15,6 +16,7 @@ This application runs on the command line. The user is able to view and choose f
 
 
 ### Project design 
+This tree represents the directories in this repository. 
 
 ```
 .
@@ -55,9 +57,10 @@ This application runs on the command line. The user is able to view and choose f
 
 ### How I met the requirements 
 
-* Model 
-* Repository Pattern
-* Abstraction: The higher the level of a module, the less detail. The lower the level, the more detail. 
+* Model the business domain using classes 
+* Use of the repository pattern
+* Use of Abstraction
+
 
 [![Untitled-Diagramss-Page-2-drawio.png](https://i.postimg.cc/tCVCwTdP/Untitled-Diagramss-Page-2-drawio.png)](https://postimg.cc/Vdm8bzVL)
 
