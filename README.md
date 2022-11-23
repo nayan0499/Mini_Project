@@ -20,9 +20,49 @@ This application runs on the command line. The user is able to view and choose f
 
 [![Untitled-Diagramss-Page-2-drawio.png](https://i.postimg.cc/tCVCwTdP/Untitled-Diagramss-Page-2-drawio.png)](https://postimg.cc/Vdm8bzVL)
 
+
+
 [![Untitled-Diagram-drawiosss-Page-1-drawio-2.png](https://i.postimg.cc/LsjPpDzt/Untitled-Diagram-drawiosss-Page-1-drawio-2.png)](https://postimg.cc/PLrJbmVJ)
 #### Project structure
-[![tree.jpg](https://i.postimg.cc/bv1hGr81/tree.jpg)](https://postimg.cc/mcZqJbPr)
+
+```
+.
+├── README.md
+├── app.py
+├── requirements.txt
+├── src
+│   ├── courier
+│   │   ├── courier.py
+│   │   └── courier_repository.py
+│   ├── csvhandler
+│   │   └── csv.py
+│   ├── data
+│   │   ├── courier.csv
+│   │   ├── order.csv
+│   │   └── product.csv
+│   ├── menu.py
+│   ├── order
+│   │   ├── order.py
+│   │   └── order_repository.py
+│   ├── product
+│   │   ├── product.py
+│   │   └── product_repository.py
+│   ├── repository
+│   │   └── repository.py
+│   └── service.py
+└── test
+    ├── resource
+    │   └── fake_product.csv
+    ├── test_courier.py
+    ├── test_order.py
+    ├── test_product.py
+    ├── test_product_repo.py
+    └── test_service.py
+
+```
+
+
+
 
 ### Meeting project requirement
 * Unit testing using unittest and pytest 
