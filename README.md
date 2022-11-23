@@ -21,6 +21,8 @@ This application runs on the command line. The user is able to view and choose f
 [![Untitled-Diagramss-Page-2-drawio.png](https://i.postimg.cc/tCVCwTdP/Untitled-Diagramss-Page-2-drawio.png)](https://postimg.cc/Vdm8bzVL)
 
 [![Untitled-Diagram-drawiosss-Page-1-drawio-2.png](https://i.postimg.cc/LsjPpDzt/Untitled-Diagram-drawiosss-Page-1-drawio-2.png)](https://postimg.cc/PLrJbmVJ)
+#### Project structure
+[![tree.jpg](https://i.postimg.cc/bv1hGr81/tree.jpg)](https://postimg.cc/mcZqJbPr)
 
 ### Meeting project requirement
 * Unit testing using unittest and pytest 
