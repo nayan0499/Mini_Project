@@ -27,6 +27,27 @@ This application runs on the command line. The user is able to view and choose f
 ### Meeting project requirement
 * Unit testing using unittest and pytest 
 
+### Demo - Get index function 
+
+```Python 
+  def get_index(self, len_of_items: int):
+        max_index = len_of_items - 1
+        print(f'Select from 0 to {max_index}')
+        try:
+            index = int(input('Index: '))
+            if index > len_of_items:
+                print('Invalid input')
+                return self.get_index(len_of_items)
+        except:
+            print('Invalid input')
+            return self.get_index(len_of_items)
+        if index not in range(len_of_items) or index == '':
+            return self.get_index(len_of_items)
+        else:
+            return int(index)
+ ```
+
+
 ### Improvements
 * Do more tests
 * Persist data in a database 
