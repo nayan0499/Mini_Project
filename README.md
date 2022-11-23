@@ -53,8 +53,9 @@ This application runs on the command line. The user is able to view and choose f
 ```
 
 
+### How I met the requirements 
 
-
+* Model 
 * Repository Pattern
 * Abstraction: The higher the level of a module, the less detail. The lower the level, the more detail. 
 
@@ -69,28 +70,18 @@ This application runs on the command line. The user is able to view and choose f
 
 
 
-
-### Meeting project requirement
-* Unit testing using unittest and pytest 
-
-### Demo - Get index function 
+### Demo - Update function 
 
 ```Python 
-  def get_index(self, len_of_items: int):
-        max_index = len_of_items - 1
-        print(f'Select from 0 to {max_index}')
-        try:
-            index = int(input('Index: '))
-            if index > len_of_items:
-                print('Invalid input')
-                return self.get_index(len_of_items)
-        except:
-            print('Invalid input')
-            return self.get_index(len_of_items)
-        if index not in range(len_of_items) or index == '':
-            return self.get_index(len_of_items)
-        else:
-            return int(index)
+
+   def update(self, *args):
+        list_of_items = self.repo.get()
+        print(self.tabulate_list(list_of_items, True))
+        index = self.get_index(len(list_of_items))
+        updated_details = self.item_type.get_update(*args)
+        self.repo.update(index, updated_details)
+        return updated_details
+
  ```
 
 
