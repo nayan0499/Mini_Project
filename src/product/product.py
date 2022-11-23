@@ -18,12 +18,6 @@ class Product:
             self.name = name.title()
 
     @classmethod
-    def object_to_list(cls, object):
-        if not isinstance(object, Product):
-            raise TypeError('Object needs be an instance of Product')
-        return [object.name, object.price]
-
-    @classmethod
     def dict_to_obj(cls, dict):
         try:
             product = Product(dict['name'], float(dict['price']))
@@ -49,7 +43,7 @@ class Product:
                 continue
 
     @classmethod
-    def get_update_details(cls):
+    def get_update(cls):
 
         product_details = {}
         for key in cls.keys:
@@ -57,14 +51,14 @@ class Product:
             if input_by_user != '':
                 product_details[key] = input_by_user
         try:
-            product_details = cls.get_validated_update_details(product_details)
+            product_details = cls.get_validated_update(product_details)
             return product_details
         except TypeError as e:
             print(e)   # TODO:
             return cls.get_update_details()
 
     @classmethod
-    def get_validated_update_details(cls, product_details):
+    def get_validated_update(cls, product_details):
         for k, v in product_details.items():
             if k == 'name':
                 if v.isnumeric():

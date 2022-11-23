@@ -1,5 +1,2 @@
-venv
-__pycache__
 mini_project_venv
-.vscode
-.idea
+__pycache__

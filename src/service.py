@@ -4,8 +4,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from tabulate import tabulate
 
-from courier.courier import Courier
-from order.order import Order
+from src.courier.courier import Courier
+from src.order.order import Order
 from src.courier.courier_repository import CourierFileRepository
 from src.order.order_repository import OrderFileRepository
 from src.product.product import Product
@@ -16,6 +16,40 @@ class Service:
     def __init__(self, repo, item_type):
         self.repo = repo
         self.item_type = item_type
+    
+    def display(self):
+        list_of_items = self.repo.get()
+        if len(list_of_items) == 0:
+            print('No items to display')
+        else:
+            table = self.tabulate_list(list_of_items, False)
+            print(table)
+
+    def add(self):
+        item = self.item_type.create()
+        self.repo.add(item)
+        return item
+
+    def update(self, *args):
+        list_of_items = self.repo.get()
+        print(self.tabulate_list(list_of_items, True))
+        index = self.get_index(len(list_of_items))
+        updated_details = self.item_type.get_update(*args)
+        self.repo.update(index, updated_details)
+        return updated_details
+
+    def delete(self):
+        list_of_items = self.repo.get()
+        print(self.tabulate_list(list_of_items, True))
+        index = self.get_index(len(list_of_items))
+        self.repo.delete(index)
+        return index
+
+    def save(self):
+        self.repo.save()
+
+
+
 
     def get_index(self, len_of_items: int):
         max_index = len_of_items - 1
@@ -33,7 +67,7 @@ class Service:
         else:
             return int(index)
 
-    def convert_list_of_items_into_table(
+    def tabulate_list(
         self, list_of_objects: list, with_index=True
     ):
         item_list = []
@@ -49,36 +83,7 @@ class Service:
         )
         return table
 
-    def display(self):
-        list_of_items = self.repo.get()
-        if len(list_of_items) == 0:
-            print('No items to display')
-        else:
-            table = self.convert_list_of_items_into_table(list_of_items, False)
-            print(table)
-
-    def add(self):
-        item = self.item_type.create()
-        self.repo.add(item)
-        return item
-
-    def update(self, *args):
-        list_of_items = self.repo.get()
-        print(self.convert_list_of_items_into_table(list_of_items, True))
-        index = self.get_index(len(list_of_items))
-        updated_details = self.item_type.get_update_details(*args)
-        self.repo.update(index, updated_details)
-        return updated_details
-
-    def delete(self):
-        list_of_items = self.repo.get()
-        print(self.convert_list_of_items_into_table(list_of_items, True))
-        index = self.get_index(len(list_of_items))
-        self.repo.delete(index)
-        return index
-
-    def save(self):
-        self.repo.save()
+   
 
 
 prod_repo = ProductFileRepository(

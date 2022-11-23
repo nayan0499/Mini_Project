@@ -24,9 +24,7 @@ class Order:
             self.items = items
 
 
-    @classmethod
-    def object_to_list(cls, object):
-        return [object.customer_name, object.customer_address, object.customer_phone, object.courier, object.status, object.items]
+
 
     @classmethod
     def create(cls):
@@ -45,7 +43,7 @@ class Order:
                 continue
     
     @classmethod
-    def get_update_details(cls, *args):
+    def get_update(cls, *args):
         status = {}
         if len(args) != 0:
             for x in args:
@@ -59,15 +57,15 @@ class Order:
                 if input_by_user!= "":
                     order_details[key] = input_by_user
             try: 
-                order_details = cls.get_validated_update_details(order_details)
+                order_details = cls.get_validated_update(order_details)
                 return order_details
             except TypeError as e: 
                 print(e)
-                return cls.get_update_details()
+                return cls.get_update()
 
 
     @classmethod
-    def get_validated_update_details(cls, order_details):
+    def get_validated_update(cls, order_details):
         for k,v in order_details.items():
             if k =="customer_name": 
                 if v.isnumeric(): 
