@@ -15,15 +15,6 @@ This application runs on the command line. The user is able to view and choose f
 
 
 ### Project design 
-* Repository Pattern
-* Abstraction: The higher the level of a module, the less detail. The lower the level, the more detail. 
-
-[![Untitled-Diagramss-Page-2-drawio.png](https://i.postimg.cc/tCVCwTdP/Untitled-Diagramss-Page-2-drawio.png)](https://postimg.cc/Vdm8bzVL)
-
-
-
-[![Untitled-Diagram-drawiosss-Page-1-drawio-2.png](https://i.postimg.cc/LsjPpDzt/Untitled-Diagram-drawiosss-Page-1-drawio-2.png)](https://postimg.cc/PLrJbmVJ)
-#### Project structure
 
 ```
 .
@@ -60,6 +51,21 @@ This application runs on the command line. The user is able to view and choose f
     └── test_service.py
 
 ```
+
+
+
+
+* Repository Pattern
+* Abstraction: The higher the level of a module, the less detail. The lower the level, the more detail. 
+
+[![Untitled-Diagramss-Page-2-drawio.png](https://i.postimg.cc/tCVCwTdP/Untitled-Diagramss-Page-2-drawio.png)](https://postimg.cc/Vdm8bzVL)
+
+
+
+[![Untitled-Diagram-drawiosss-Page-1-drawio-2.png](https://i.postimg.cc/LsjPpDzt/Untitled-Diagram-drawiosss-Page-1-drawio-2.png)](https://postimg.cc/PLrJbmVJ)
+#### Project structure
+
+
 
 
 
