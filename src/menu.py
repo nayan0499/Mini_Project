@@ -40,4 +40,4 @@ prod_menu = Menu("Product", ["Return to the main menu", "View all products",
 ord_menu = Menu("Order", ["Return to the main menu", "View all orders", "Create a new order",
                 "Update the order status", "Update an existing order", "Delete an order"])
 cour_menu = Menu("Courier", ["Return to the main menu", "View all couriers",
-                    "Add a new courier", "Update an existing courier", "Delete a courier"])
+                    "Add  new courier", "Update an existing courier", "Delete a courier"])
